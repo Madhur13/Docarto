@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block styling %}
+<style>
+    input:not([type="submit"]), textarea {
+    outline:none;
+    display:block;
+    width:380px;
+    padding:4px 8px;
+    border:1px dashed #DBDBDB;
+    color:#3F3F3F;
+    /*transition*/
+    -webkit-transition:background 0.2s linear, box-shadow 0.6s linear;
+    -moz-transition:background 0.2s linear, box-shadow 0.6s linear;
+    -o-transition:background 0.2s linear, box-shadow 0.6s linear;
+    transition:background 0.2s linear, box-shadow 0.6s linear;
+}
+input:not([type="submit"]):active, textarea:active, input:not([type="submit"]):focus, textarea:focus {
+    background:#F7F7F7;
+    border:dashed 1px #969696;
+    /*box-shadow*/
+    -webkit-box-shadow:2px 2px 7px #E8E8E8 inset;
+    -moz-box-shadow:2px 2px 7px #E8E8E8 inset;
+    box-shadow:2px 2px 7px #E8E8E8 inset;
+}
+
+/* placeholder */
+ ::-webkit-input-placeholder {
+    color:#BABABA;
+}
+
+textarea {
+    min-height:150px;
+    resize:vertical
+}
+/** labels**/
+
+label {
+    color:#7F7E7E;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    transition: color 1s ease;
+}
+/** Styling the send button **/
+ input[type=submit] {
+    margin-left:235px;
+    color:#767676;
+    font-size:18px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<!-- banner -->
+<div class="page-head">
+	<div class="container">
+		<h3>Single</h3>
+	</div>
+</div>
+<!-- //banner -->
+
+
+
+            <div class="horizontal-tab container">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">Earning Status</a></li>
+                <li class=""><a href="#tab2" data-toggle="tab" aria-expanded="false">Withdraw Money</a></li>
+                <li class=""><a href="#tab3" data-toggle="tab" aria-expanded="false">Refer N Get Forever</a></li>
+                <li class=""><a href="#tab4" data-toggle="tab" aria-expanded="false">Your Guide</a></li>
+                <li class=""><a href="#tab5" data-toggle="tab" aria-expanded="false">Profile</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active in" id="tab1">
+									{% if transactions %}
+                  <div class="row">
+                    <div class="col-sm-12">
+                         <div class="">
+	<div class="container">
+		<div class="table-responsive checkout-right animated wow slideInUp" data-wow-delay=".5s">
+			<table class="timetable_sub">
+				<thead>
+					<tr>
+                        <th>Portal </th>
+						<th>Product Name </th>
+						<th>Commission</th>
+                        <th>Date</th>
+					</tr>
+				</thead>
+
+				{% for transaction in transactions %}
+
+				<tr class="rem1">
+					<td >{{ transaction.offer.company.name }}</td>
+					<td >{{transaction.offer.description}}</td>
+											<td >{{ transaction.cashback }}</td>
+											 <td >{{ transaction.created }}</td>
+				</tr>
+				{% endfor %}
+						</table>
+		</div><br>
+        <p>Total Earning = Rs. Incomplted</p>
+	</div>
+</div>
+                    </div>
+                  </div>
+									{% else %}
+										<h2>No transactions</h2>
+									{% endif %}
+                </div>
+                <div class="tab-pane" id="tab2">
+                  <div class="row">
+                      <h3>Minimun Payout Limit is 500, Fill suitable form.</h3>
+               <div class="col-sm-6">
+                      <div id="content" >
+         <form action="{% url  'addBankDetails' %}" method="post" autocomplete="on">
+           {%csrf_token%}
+                  {% if message %}
+                    	{{ message }}</br>
+                    {% endif%}
+             <h3><b>Bank Transfer</b></h3><br>
+        <p>
+            <label for="name" class="icon-user"> Name</label>
+            <input type="text" id="name" required="required" name="account_name" placeholder="Account Holder Name" {% if customer.account_name %}value="{{customer.account_name}}" {%endif%} />
+        </p><br>
+             <p>
+            <label for="accountNo" class="icon-link"> Account No.</label>
+            <input type="number" id="accountNo" name="account_no" placeholder="Bank A/C No." {%if customer.account_no%}value="{{customer.account_no}}" {%endif%} />
+        </p><br>
+             <p>
+            <label for="ifsc" class="icon-user"> Branch IFSC</label>
+            <input type="text" id="ifsc" name="ifsc" required="required" placeholder="Branch IFSC Code" {%if customer.ifsc %}value="{{customer.ifsc}}" {%endif%}/>
+        </p><br>
+        <input type="submit" value=" Save" />
+              </form></div>
+                      </div>
+
+              <div class="col-sm-6">
+                  <div id="content" class="col-sm-6">
+           <form action="{% url 'addPaytmDetails' %}" method="post" autocomplete="on">
+             {%csrf_token%}
+             {% if message %}
+                 {{ message }}</br>
+               {% endif%}
+               <h3><b>Paytm Wallet</b> </h3><br>
+        <p>
+            <label for="name" class="icon-user"> Name</label>
+            <input type="text" id="name" name="paytm_name" required="required" placeholder="Your Name" {%if customer.paytm_name%}value="{{customer.paytm_name}}" {%endif%} />
+        </p><br>
+        <p>
+            <label for="phone" class="icon-link"> Phone</label>
+            <input type="tel" id="phone" name="paytm_no" placeholder="Paytm Mobile Number" {%if customer.paytm_no%}value="{{customer.paytm_no}}" {%endif%}/>
+        </p>
+
+        <br>
+        <input type="submit" value=" Save" />
+
+                  </form></div>
+                      </div>
+
+                  </div>
+                </div>
+                <div class="tab-pane" id="tab3">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h4>Refer your friends by sharing your unique code to them and Earn 10% from our commission of sale which was made by your friend. Only once they sign up with your code you will start getting money forever.</h4><br>
+                        <h3>Your Unique referral code is - {{ customer.referral_code }}</h3><br>
+												{% if referrals %}
+                        <h4>People who joined through your Referral Code</h4><br>
+
+                        <div class="row">
+                    <div class="col-sm-12">
+		<div class="table-responsive checkout-right animated wow slideInUp" data-wow-delay=".5s">
+			<table class="timetable_sub">
+				<thead>
+					<tr>
+                        <th>S.N. </th>
+						<th>Referral Network </th>
+					</tr>
+				</thead>
+
+						{% for referral in referrals %}
+							<tr class="rem1">
+								<td >{{forloop.counter}}.</td>
+								<td >{{referral.user}}</td>
+		                	</tr>
+						{% endfor %}
+
+
+
+						</table>
+		</div><br>
+	</div>
+</div>
+{% else %}
+		<h2>Currently, you have not reffered anyone.</h2>
+{% endif %}
+                    </div>
+                  </div>
+
+                    </div>
+                <div class="tab-pane " id="tab4">
+                  <form action="{% url 'setCategoryPrefs' %}" method="POST">
+                    {%csrf_token%}
+                  <div class="row">
+                      <h3 style="text-align:center;">Select your product/serviece category and get related offers direct right in your Inbox.</h3>
+                    <div class="col-sm-5">
+                        <div class="filteration">
+				<h4>Selected Categories</h4>
+
+				<div class="swit form">
+					{% for category in categories %}
+						 <input type="checkbox" name="categories[]" value="{{category.id}}" checked id="{{category.name}}"><label for="{{category.name}}">{{category.name}}</label><br/>
+					{% endfor %}
+				</div>
+				</div>
+				</div>
+				<div class="col-sm-5">
+						<div class="filteration">
+						<h4>Unselected Categories</h4>
+						<div class="swit form">
+					{% for category in other_categories %}
+						 <input type="checkbox"  name="categories[]" value="{{category.id}}" id="{{category.name}}"><label for="{{category.name}}">{{category.name}}</label><br/>
+					{% endfor %}
+				</div>
+				</div>
+				</div>
+
+
+                    </div>
+                    <button type="submit" value="Submit">Submit</button>
+                  </form>
+                  </div>
+
+                  <div class="tab-pane " id="tab5">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div id="content">
+
+    <form action="{% url 'userSettings' %} " method="post" autocomplete="on">
+        
+		{%csrf_token%}
+        <p>
+            <label for="email" class="icon-envelope"> E-mail address</label>
+            <input type="email" name="email" id="email"  required="required" value="{{customer.user.email}}"/>
+        </p>
+
+        <p>
+            <label for="phone" class="icon-link"> Phone</label>
+            <input type="tel" name="phone" id="phone" placeholder="09999999999" {%if customer.phone%} value="{{customer.phone}}" {%endif%} />
+        </p>
+		
+		<input type="submit" value=" Save " />
+	</form>
+
+		
+		<form action="#" method="post" autocomplete="on">
+		{%csrf_token%}
+        <h3>Change Password</h3>
+         <p>
+            <label for="old_pass" class="icon-link"> Old Password</label>
+            <input type="text" name="old_password" id="odl_pass" placeholder="******" />
+        </p>
+         <p>
+            <label for="new_pass" class="icon-link"> New Password</label>
+            <input type="text" name="new_password" id="new_pass" placeholder="******" />
+        </p>
+         <p>
+            <label for="confirm_pass" class="icon-link"> Confirm Password</label>
+            <input type="text" name="confirm_password" id="confirm_pass" placeholder="******" />
+        </p>
+
+
+        <input type="submit" value=" Save " />
+
+    </form>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+{% endblock %}

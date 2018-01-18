@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}
+	<title>Advertise With Us | Docarto</title>
+{% endblock %}
+
+{% block metatags %}
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+{%endblock %}
+{% block content %}
+
+{% if brandAmbassador == "success" %}
+	<script type="text/javascript">
+			$(window).on('load',function(){
+				$('#BrandAmbassador').modal('show');
+			});
+	</script>
+
+{% endif %}
+
+<div class="modal" id="BrandAmbassador" role="dialog">
+<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Welcome to Brand Ambassador Program</h4>
+		</div>
+		<div class="modal-body">
+			<p>Your request is under approval. We will contact you soon.</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
+
+</div>
+</div>
+<div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-6">
+                      <div class="team-member">
+          <div class="team-member-image"><img src="{% static 'main/images/advertise-with-us.jpg' %}" class="img-rounded" alt="Benefits to advertise on Docarto" >
+
+          </div></div>
+
+                  </div>
+                  <div class="col-sm-6">
+
+
+                      <h3 style="text-align:center;center;color: maroon;"><b>Advertise with Us </b></h3>
+<br>
+
+    <ul style="color: maroon;font-size: 21px;">
+
+Are you an online company/startup that wants to participate as a advertiser on Docarto.com?<br>
+Are you already our partner that wants increased exposure to our Members?<br>
+Docarto.com has an entire team ready to put together a cost-effective advertising campaign for you. We can provide you with:<br>
+
+<li style="color: darkcyan;">Home page slider placement. </li>
+<li style="color: darkcyan;">Enhanced visibility of your coupons, promos and specials deals.</li>
+<li style="color: darkcyan;">Inclusion in our weekly emails, Social media.</li>
+<li style="color: darkcyan;">and much more.</li>
+Then Contact to : <a href="mailto:docarto.india@gmail.com" >docarto.india@gmail.com</a></ul>
+                  </div>
+
+              </div>
+
+                </div>
+{% endblock %}

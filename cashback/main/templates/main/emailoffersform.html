@@ -1,0 +1,26 @@
+
+
+<form action="{% url 'mailoffers' %}" method="POST">
+{%csrf_token%}
+	<div>
+		{% for offer in offers %}
+		   <div class="col-xs-12 col-sm-4">
+	        			<div style="height:210px;width=100px;border:1px solid black;">
+							{% if offer.company.logo %}
+								<img src="{{offer.company.logo.url}}" height="50" width="110px" style="display:block;margin:auto;"/>
+							{% endif %}
+		        			<h5 class="offerdes"><b>{{offer.description}}</b></h5>
+		        			<p class="company">{{offer.company.name}}</p>
+							{% if offer.mailed %}
+								<p>Offer has been mailed {{offer.mailed}}  times.</p>
+							{%endif%}
+		        		<input id="{{offer.id}}" type="checkbox" name="selected_offers[]" value="{{ offer.id }}"/>
+						<label for="{{offer.id}}">Email It!</label>
+						</div>
+						
+	        		</div>
+		{% endfor %}
+	</div>
+	<br/>
+	<input type="submit" value="Email preferred users"/>
+</form>

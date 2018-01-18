@@ -1,0 +1,34 @@
+{% if offers %}
+ {% for offer in offers %}
+<div class="col-md-12 product_offer no-pad-men">
+					<div class="offer-item offer-list">
+                        <table>
+                        <tr>
+                            <td> <div style="width:110px;float: left;margin-left: 11px;">
+                                {% if offer.company.logo %}
+									<img src="{{offer.company.logo.url}}" alt="{{offer.company.alt_tag}}" height="80px;" />
+									{% endif %}</div> </td>
+
+							<td class="offerline"><ul style="margin-left: 20px;list-style: none;">
+                                <li style="list-style: none;">  <h4 style="font-weight: 551;margin-top: 7px;">{{offer.description}}<br><span style="color: green;">+ extra cashback from docarto.</span></h4></li>
+                              <li style="font-weight: bold;margin-top: 7px;color: gray;">
+								{%if offer.coupon_code %}
+									{{offer.coupon_code}}
+								{% else %}
+									No Coupon Code Required
+								{% endif %}
+
+							</li></ul></td>
+                             <td style="text-align: center;"><div class="item-info-product ">
+									<a href="{% url 'shop' offer.id%}" target="_blank" class="item_add single-item hvr-outline-out button2">Grab Offer</a>
+						</div></td>
+                            </tr>
+
+
+                        </table>
+					</div>
+				</div>
+				{% endfor %}
+  {% else %}
+    <h2 class="page-description">No active offers right now.</h2>
+  {% endif %}

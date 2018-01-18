@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Refer N Get | Docarto</title>
+{% endblock %}
+
+{% block content%}
+<br>
+<br>
+<div class="container-fluid">
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <div class="team-member">
+														<div class="team-member-image"><img src="{% static 'main/images/refer-n-get-forever.jpg'%}" class="img-rounded" alt="Founder Image"  >
+
+														</div></div>
+
+							                      </div>
+																		<div class="col-sm-6">
+																				<h3 style="text-align:center;center;color: maroon;"><b>Refer friends n get 10% Cash forever! </b></h3>
+																				<br>
+																				<ul style="color: darkcyan;font-size: 25px;">
+																					Send your friends to Docarto.com and get 10% from our commission forever! For example,When your friend purchase anything from our partner site via us
+																					then we get the commission from our partner and we give 80% to your friend(direct user) & 10% to referrer. Suppose how much you can earn if you refer
+																					your friends to join Docarto! <br>
+																					Happy Saving n Earning!
+																				</ul>
+																		</div>
+							        </div>
+										 </div>
+
+
+<div class="coupons howtoearn">
+<div class="container">
+<div class="coupons-grids text-center">
+	<div class="col-md-3 coupons-gd">
+						<h3>Your Unique referral code is - {{referral_code}}</h3>
+	</div>
+	<div class="col-md-3 coupons-gd">
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+		<h4>Refer to friends.</h4>
+		<p>Invite a friend to help in saving online.</p>
+	</div>
+	<div class="col-md-3 coupons-gd">
+		<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		<h4>Friend joins Docarto</h4>
+		<p>Friend signs up with your code, </p>
+	</div>
+	<div class="col-md-3 coupons-gd">
+		<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+		<h4>Get Paid Forever</h4>
+		<p>When a friend purchases via our link, you earn 10% from our commission.</p>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+</div>
+</div>
+
+
+   {% if referrals %}
+    <div class="col-md-8 col-md-offset-2">
+    <table class="referngettable">
+				<thead>
+					<tr>
+                        <th><h3>People who join through your Referral Code </h3></th>
+					</tr>
+				</thead>
+					{% for referral in referrals %}
+					<tr class="rem1">
+						<td ><div style="color:darkcyan;"><h4>{{referral.user}}</h4>
+
+					<span style="color:grey;">	Joined {{referral.created.date}}</span></div><!--<div style="float:right;"><span style="color:green;">You Earned Rs.{% widthratio referral.balance 10 1 %}</span>
+				</div>--></td>
+						</tr>
+					{% endfor %}
+
+					
+					</table></div>
+	{%else%}
+		<h3 style="text-align:center;color:darkcyan;margin-bottom:11px;">You have not referred anyone yet.</h3>
+
+	{%endif%}
+
+
+<div class="container">
+    <div class="row">
+	</div></div>
+
+{%endblock%}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Contact Us | Docarto</title>
+{% endblock %}
+
+{% block content%}
+{% if contact == "success" %}
+  <script type="text/javascript">
+      $(window).on('load',function(){
+        $('#querySubmit').modal('show');
+      });
+  </script>
+{% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+	   <div class="col-sm-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.2754449953914!2d75.80680131463652!3d26.926480983121568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db156708b1671%3A0x26009aa9a63ddd01!2sDocarto.com!5e0!3m2!1sen!2sin!4v1506950381783" width="751" height="550" frameborder="0" style="border:0" allowfullscreen></iframe>
+       </div>
+		<div class="col-sm-6">
+
+			 <div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-right">
+										<h3>Get in touch with us anytime</h3>
+										<form method="post">
+                        {%csrf_token%}
+                        <div class="sign-up">
+                        <label for="name">Name :</label>
+                        {% for error in form.name.errors %}
+                          <div class="alert alert-warning">
+                          <a href="#" class="close" data-dismiss="alert">&times;</a>
+                          <strong>{{ error }}</strong>
+                          </div>
+                        {% endfor %}
+
+												<input id="name" name="name" type="text">
+											</div>
+											<div class="sign-in">
+                        <label for="email">Email :</label>
+                        {% for error in form.email.errors %}
+    												<div class="alert alert-warning">
+    													<a href="#" class="close" data-dismiss="alert">&times;</a>
+    													<strong>{{ error }}</strong>
+    												</div>
+    											{% endfor %}
+
+												<input id="email" name="email" type="email">
+											</div>
+											<div class="sign-up">
+                        <label for="phone">Phone :</label>
+                        {% for error in form.phone.errors %}
+    												<div class="alert alert-warning">
+    													<a href="#" class="close" data-dismiss="alert">&times;</a>
+    													<strong>{{ error }} </strong>
+    												</div>
+    											{% endfor %}
+
+												<input id="phone" name="phone" type="text">
+											</div>
+                      <div class="sign-up">
+                        <label for="message">Message :</label>
+                        {% for error in form.message.errors %}
+    												<div class="alert alert-warning">
+    													<a href="#" class="close" data-dismiss="alert">&times;</a>
+    													<strong>{{ error }}</strong>
+    												</div>
+    											{% endfor %}
+
+												<input id="message" name="message" type="text">
+											</div>
+                      <div class="sign-in">
+												<input type="submit" value="Send" >
+											</div>
+										</form>
+									</div>
+								</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+		</div>
+    </div>
+</div>
+
+<div class="modal" id="querySubmit" role="dialog">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Message Sent</h4>
+    </div>
+    <div class="modal-body">
+      <p>Your response has been recorded. Our team will respond soon.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+{% endblock %}

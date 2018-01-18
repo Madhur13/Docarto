@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+	{% block title %}
+	{% endblock %}
+<link rel="icon" href="{% static 'main/images/favicon.jpg' %}" type="image/jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta name="author" content="Harishankar Pansari">
+	{% block metatags %}
+	{% endblock %}
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+				function hideURLbar(){ window.scrollTo(0,1); } </script>
+	 <link href="{% static 'main/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	     <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+	     <link href="{% static 'main/css/menu.css' %}" type="text/css" rel="stylesheet"/>
+	     <link href="{% static 'main/css/full-slider.css' %}" rel="stylesheet">
+	 <link href="{% static 'main/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	 <script type="text/javascript" src="{% static 'main/js/jquery-2.1.4.min.js' %}"></script>
+	 	<script type="text/javascript" src="{% static 'main/js/bootstrap-3.1.1.min.js' %}"></script>
+	 <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	 <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+	 <script src="{% static 'main/js/jquery.easing.min.js' %}"></script>
+
+	{% block styling %}
+	{% endblock %}
+
+</head>
+<body>
+
+
+  <header class="navbar-fixed-top" role="banner">
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+                    <li class="active menu__item menu__item--current">   <h2 class="navbar-brand brand-name">
+						<a href="{% url 'index' %}"><img class="img-responsive2"  src="{% static 'main/images/logo3.jpg' %}"></a>
+                        </h2></li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:17px;">Offers by Products<span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-xs-12 col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="/main/category/electronics">Electronics </a></li>
+                                            <li><a href="/main/category/fashion">Fashion</a></li>
+											<li><a href="/main/category/Health & Beauty">Health & Beauty</a></li>
+											<li><a href="/main/category/furniture">Furniture</a></li>
+										</ul>
+									</div>
+										<div class="col-xs-12 col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+                                            <li><a href="/main/category/Books">Books & Stationery</a></li>
+                                            <li><a href="/main/category/eyewear">Eyewear</a></li>
+                                            <li><a href="/main/category/Flowers & Gifts">Flowers & Gifts</a></li>
+										</ul>
+									</div>
+									<div class="col-xs-12 col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+                                          <li><a href="/main/category/Baby & Kids">Baby & Kids Products</a></li>
+                                            <li><a href="/main/category/Home & Kitchen">Home & Kitchen</a></li>
+										</ul>
+                                    </div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+	<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:17px;">Services Offer<span class="caret"></span></a>
+		<ul class="dropdown-menu multi-column columns-3">
+			<div class="row">
+				<div class="col-sm-3 multi-gd-img">
+					<ul class="multi-column-dropdown">
+					<li><a href="/main/category/Movie Ticket">Movie Ticket</a></li>
+																	<li><a href="/main/category/Recharge & Bill">Recharge & Bill</a></li>
+						<li><a href="/main/category/Online Food">Online Food</a></li>
+						<li>Domain & Hosting</li>
+						<li><a href="/main/category/Name of Domain">Domain Name</a></li>
+						<li><a href="/main/category/Hosting Service">Hosting Service</a></li>
+
+
+					</ul>
+				</div>
+				<div class="col-sm-5 multi-gd-img">
+					<ul class="multi-column-dropdown">
+						<li>Servieces</li>
+						<li><a href="/main/category/Repair & Home maintenance">Repair & Home maintenance</a></li>
+						<li><a href="/main/category/Wedding Services">Wedding Services</a></li>
+						<li><a href="/main/category/Help for your Business">Help for your Business</a></li>
+
+						</ul>
+				</div>
+				<div class="col-sm-4 multi-gd-img">
+					<ul class="multi-column-dropdown">
+																	<li >Travel</li>
+						<li><a href="/main/category/Bus">Bus</a></li>
+						<li><a href="/main/category/Railway">Railway</a></li>
+						<li><a href="/main/category/Flight">Flight</a></li>
+						<li><a href="/main/category/Cabs & Car-Rent">Cabs & Car-Rent</a></li>
+																	<li><a href="/main/category/Hotel Booking">Hotel Booking</a></li>
+																	</ul>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+		</ul>
+</li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:17px;">Top Portals<span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="/main/company/amazon">Amazon</a></li>
+											<li><a href="/main/company/flipkart">Flipkart</a></li>
+											<li><a href="/main/company/Makemytrip">MakeMyTrip</a></li>
+											<li><a href="/main/company/paytmmall">PaytmMall</a></li>
+											<li><a href="/main/company/nearbuy">Nearbuy</a></li>
+											<li><a href="/main/company/treebohotels">Treebo Hotels</a></li>
+											<li><a href="/main/company/eBay India">Ebay/a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="/main/company/bigbasket">BigBasket</a></li>
+											<li><a href="/main/company/godaddy">Godaddy</a></li>
+											<li><a href="/main/company/bigrock">Bigrock</a></li>
+											<li><a href="/main/company/mobikwik">Mobikwik</a></li>
+											<li><a href="/main/company/nykaa">Nykaa</a></li>
+											<li><a href="/main/company/netmeds">Netmeds</a></li>
+										</ul>
+									</div>
+                                    <div class="col-sm-4 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="/main/company/myntra">Myntra</a></li>
+											<li><a href="/main/company/ajio">AJIO</a></li>
+											<li><a href="/main/company/	Bookmyshow">BookMyShow</a></li>
+											<li><a href="/main/company/cleartrip">Cleartrip</a></li>
+											<li><a href="{% url 'allPortals' %}">See All portals<span class="glyphicon">&#xe080;</span></a></li>
+											</ul>
+									</div>
+                                    <div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-size:17px;">Help<span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href="{% url 'aboutUs' %}">Our Services</a></li>
+											<li><a href="{% url 'terms' %}">Missing Cashback</a></li>
+											<li><a href="{% url 'contactUs' %}">Contact us</a></li>
+											</ul>
+									</div>
+                                    <div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+		</div>
+        <div class="top_nav_right">
+		{% if request.user.is_authenticated %}
+          		<div class="cart box_1">
+						<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{% static 'main/images/wallet.png'%}">&nbsp;My Account<span class="caret"></span></a>
+                            <ul class="dropdown-menu  multi-column-dropdown">
+								<li><a href="{% url 'earningStatus' %}">Earning Status</a></li>
+								<li><a href="{% url 'referral' %}">Refer N Get</a></li>
+
+								<li><a href="{% url 'logout' %}">Logout</a></li>
+
+									</ul>
+					</li>
+				</div>
+
+			<!--
+			<a href="{% url 'profile' %} "><h3>Hi {{request.user}}</h3></a>
+			<a href="{% url 'logout' %}"><h3> Logout</h3></a> -->
+		{% else %}
+			<p class="navbar-text navbar-right"><a class="navbar-link login use1" href="{% url 'login'%}"  style="font-size:17px;">Log In</a>
+	 		<a class="btn btn-default action-button useq" role="button" href="{% url 'signup'%}"  style="font-size:17px;"> Sign Up</a></p>
+        {% endif %}
+		</div>
+
+		<div class="clearfix"></div>
+		</div>
+	</div></header><br><br><br><br>
+<div class="stickyfooter">
+{% block content %}
+{% endblock %}
+</div>
+<div class="footer">
+	    	<div class="container">
+
+		    	<div class="row">
+
+		    		<div class="col-footer col-sm-4">
+							<h3>About Docarto </h3>
+												<a href="{% url 'aboutUs' %}" target="_blank">About us</a><br>
+												<a href="{% url 'advertiseWithUs' %}" target="_blank">Advertise with us</a><br>
+												<a href="{% url 'contactUs' %}" target="_blank">Our Team</a><br>
+												<a href="{% url 'brandAmbassadorForm' %}" target="_blank">Brand Ambassador Program</a><br>
+
+												<p class="contact-us-details">
+														<b>Phone:</b> +91 7587525372,9406563569<br/>
+														<b>Whatsapp:</b> +91 7587525372,9406563569<br/>
+														<b>Email:</b> <a href="mailto:docarto.india@gmail.com">docarto.india@gmail.com</a><br/>
+													</p>
+		    		</div>
+		    		<div class="col-footer col-sm-4 col-xs-12">
+		    			<h3>Our Social Networks</h3>
+						<p>Keep in touch for latest offers on different retailer websites and also Subscribe our you tube channel to get updates.</p>
+		    			<div>
+                            <a href="http://www.facebook.com/Docarto" target="_blank"><img src="{% static 'main/images/facebook.jpg'%}" width="32" alt="Facebook"></a>
+                            <a href="https://twitter.com/docarto" target="_blank"><img src="{% static 'main/images/twitter.jpg'%}" width="32" alt="Twitter"></a>
+                            <a href="https://www.instagram.com/docarto/" target="_blank"><img src="{% static 'main/images/instagram.jpg'%}" width="32" alt="Instagram"></a>
+		    				<a href="https://www.linkedin.com/company-beta/13362084/" target="_blank"><img src="{% static 'main/images/linkedin.jpg'%}" width="32" alt="LinkedIn"> </a>
+
+                            <a href="https://plus.google.com/u/2/115697534395960415459" target="_blank"><img src="{% static 'main/images/google%20+.jpg'%}" width="32" alt="Google Plus"></a>
+
+                            <a href="https://www.youtube.com/channel/UC4YLsCMX7QZQhMZM_qlM7KQ" target="_blank"><img src="{% static 'main/images/YouTube.jpg'%}" width="32" alt="Youtube"></a>
+
+
+                        </div></div>
+												<div class="col-footer col-sm-4">
+								    			<h3>Why us</h3>
+						                            <p>When you take any product or service from our Partner E-Commerce portals via Docarto.com, We give you 90% commission back to you which
+																					we get from our Affiliate Partners.Earn lifetime when your friend signup with your unique referral code and Purchase anything. <a href="{% url 'aboutUs'%}">Read more</a>
+						                            </p>
+								    		</div>
+		    	</div>
+		    	<div class="row">
+		    		<div class="col-xs-12 col-sm-12">
+                        <div class="footer-copyright"><a href="{% url 'terms' %}">Terms and Conditions </a> &nbsp;<a href="{% url 'terms' %}">Privacy and Cookie Policy</a>.<br>&copy; 2017 Docarto.com</div>
+                    </div>
+		    	</div>
+		    </div>
+        </div>
+
+
+				<!-- //footer -->
+</body>
+</html>

@@ -1,0 +1,271 @@
+
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Earning Status | Docarto</title>
+{% endblock %}
+
+{% block content%}
+
+<div class="coupons howtosave">
+	<div class="container">
+		<div class="coupons-grids text-center">
+			<div class="col-md-3 coupons-gd">
+                <h3>How to Save money while shopping online.</h3>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<h4>Join Docarto</h4>
+				<p>Find best offers for your need.</p>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<h4>Redirect to partner site.</h4>
+				<p>Purchase usually </p>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+				<h4>Get extra cashback</h4>
+				<p>Get 90% cashback from our commission.</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+				<div class="calltoaction-wrapper" style="margin-top:11px;">
+		 <h3>&nbsp;<span style="color:#aec62c;">Keep Saving Keep Earning Keep Smiling</span></h3>&nbsp;</div><br>
+
+				 <h2 class="page-description">We will track your purchasing and update your cash status as soon as our partner site confirm your order.</h2>
+<h2 class="page-description">Your Earning Status will appear here.</h2>
+
+
+		<div class="col-sm-4 col-sm-offset-1">
+
+<div class="table-responsive checkout-right animated wow slideInUp" >
+	<table class="timetable_sub">
+					 <thead>
+			{% if transactions %}
+			<tr>
+				<th>Date</th>
+				<th>Portal</th>
+
+				<th>Commission</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		{% for transaction in transactions %}
+			<tr class="rem1">
+										<td>{{ transaction.created.date }}</td>
+										<td>{{ transaction.offer.company.name }}</td>
+
+				<td>{{ transaction.commission }}</td>
+										 <td>
+					{% if transaction.status == 1 %}
+						PENDING
+					{% elif transaction.status == 2 %}
+						Added To Wallet
+					{% elif transaction.status == 3 %}
+						Paid
+					{% endif %}
+				 </td>
+			</tr>
+		{% endfor %}
+				</table>
+		</div>
+		{% else %}
+			<div>
+			<h2 class="page-description">No Transactions</h2>
+			</div>
+		{% endif %}
+</div>
+<div class="col-sm-4 col-sm-offset-1">
+<div class="table-responsive checkout-right animated wow slideInUp" >
+	<table class="timetable_sub">
+		{% if referrals %}
+					 <thead>
+			<tr>
+										<th>Date</th>
+										<th>Friend Name</th>
+										<th>Commission</th>
+										<th>Status</th>
+			</tr>
+		</thead>
+		{% for referral in referrals %}
+			<tr class="rem1">
+										<td>{{referral.created.date}}</td>
+										<td>{{referral.user.user}}</td>
+										<td>{{referral.referral}}</td>
+										<td>{% if referral.status == 1 %}
+											PENDING
+										{% elif referral.status == 2 %}
+											Approved
+										{% elif referral.status == 3 %}
+											Paid
+										{% endif %}</td>
+			</tr>
+			{% endfor %}
+			{% else %}
+			<div>
+			<h2 class="page-description">No Transaction in your Referral network</h2>
+			</div>
+
+			{% endif %}
+
+		</table>
+		</div>
+</div>
+
+<div class="col-sm-4 col-sm-offset-4">
+<div class="table-responsive checkout-right animated wow slideInUp " style="margin-top:51px;">
+	<table class="timetable_sub">
+					 <thead>
+			<tr>
+										<th>Total Balance</th>
+										<th>Pending</th>
+										<th>Approved</th>
+			</tr>
+		</thead>
+			<tr class="rem1">
+										<td>{{total}}</td>
+										<td>{{pending}}</td>
+										<td>{{approved}}</td>
+			</tr>
+				</table>
+		</div>
+
+
+
+		</div>
+</div>
+    </div>
+
+   <br>
+
+
+    <h2 class="page-description">Withdraw Money</h2>
+    <div class="container">
+
+
+    <div class="col-md-4 col-md-offset-1 product_offer">
+							<div class="offer-item offer-list">
+								<div class="deals-item">
+									<img src="{% static 'main/images/transfer-money- to-paytm.png'%}" alt="" class="pro-image-front">
+                                    <div class="men-cart-pro">
+											<div class="inner-men-cart-pro">
+												<a href="#" data-toggle="modal" data-target="#paytmPopup" class="link-product-add-cart">Transfer to Paytm Wallet</a>
+											</div>
+										</div>
+								</div>
+                                <div class="item-info-product ">
+                                     <ul class="list-inline">
+                                <li><b>Minimum Transfer limit is 200 </b></li>
+                                        </ul>
+                                    <br>
+									<a href="#" class="item_add single-item hvr-outline-out button2 navbar-link login use1" data-toggle="modal" data-target="#paytmPopup" style="font-size:17px;">Fill Details</a>
+
+
+								</div>
+        </div>
+						</div>
+
+
+    <div class="col-md-4  col-md-offset-1 product_offer">
+							<div class="offer-item offer-list">
+								<div class="deals-item">
+									<img src="{%static 'main/images/bank.png'%}" alt="" class="pro-image-front">
+                                    <div class="men-cart-pro">
+											<div class="inner-men-cart-pro">
+												<a href="#" data-toggle="modal" data-target="#bankPopup" class="link-product-add-cart">Bank-Account Transfer<br></a>
+											</div>
+										</div>
+								</div>
+                                <div class="item-info-product ">
+                                     <ul class="list-inline">
+                                <li><b>Minimum Transfer limit is 500</b></li>
+                                        </ul>
+                                    <br>
+									<a href="#" class="item_add single-item hvr-outline-out button2" data-toggle="modal" data-target="#bankPopup" role="button" style="font-size:17px;">Fill Details</a>
+
+								</div></div>
+						</div>
+    </div><br>
+
+
+
+    <div class="modal fade" id="paytmPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-bottom">
+										<h3>Paytm Transfer</h3>
+										<form method="POST" action="{% url 'addPaytmDetails' %}">
+											{%csrf_token%}
+                                            <div class="sign-in">
+												<h4>Paytm Mobile Number</h4>
+												<input type="text" {%if customer.paytm_no%}value="{{customer.paytm_no}}" {%endif%} name="paytm_no" required="true">
+											</div>
+											<div class="sign-in">
+												<input type="submit" value="Request">
+											</div>
+										</form>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+                                <p><b>You will be paid when amount reaches the minimum transfer limit of 200/-</b></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+    <div class="modal fade" id="bankPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						</div>
+						<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-right">
+										<h3>Transfer to Bank Account</h3>
+										<form method="POST" action="{% url 'addBankDetails' %}">
+											{%csrf_token%}
+											<div class="sign-up">
+												<h4>Account Holder Name</h4>
+
+												<input type="text" {%if customer.account_name%}value="{{customer.account_name}}" {%endif%} name="account_name" required="true">
+											</div>
+											<div class="sign-up">
+												<h4>Account NO.</h4>
+												<input type="text" {%if customer.account_no%}value="{{customer.account_no}}" {%endif%} name="account_no" required="true">
+											</div>
+                                            <div class="sign-up">
+												<h4>Branch IFSC Code</h4>
+												<input type="text" {%if customer.ifsc%}value="{{customer.ifsc}}" {%endif%} name="ifsc" required="true">	</div>
+											<div class="sign-up">
+												<input type="submit" value="Request" >
+											</div>
+
+										</form>
+									</div>
+									<div class="clearfix"></div>
+                                    <p><b>You will be paid when amount reaches the minimum transfer limit of 500/-</b></p>
+								</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+{% endblock %}

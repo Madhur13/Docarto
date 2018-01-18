@@ -1,0 +1,5 @@
+<div class="companyoffers">
+  {% for company in companies %}
+        <a href="{% url 'company' company.name %}">{{company.name}}</a><br/>
+  {% endfor %}
+</div>

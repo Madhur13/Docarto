@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Brand Ambassador | Docarto </title>
+{% endblock %}
+{% block metatags %}
+<meta name="keywords" content="" />
+<meta name="description" content="">
+{% endblock %}
+{% block content%}
+
+<div class="container">
+<div class="row">
+   <div class="col-sm-8" style="color: darkcyan;font-size: 19px;">
+       <h3>Docarto Brand Ambassador program is highly selective for our members.</h3>
+<img src="{% static 'main/images/Marketing-brochure-benefits-program.jpg' %}" class="img-responsive" alt="Benefits of Joining Brand Ambassador Program">
+Responsibility - <br>
+Demonstrate to Friends about Docarto Community, Collect feedback and gain marketing experience.<br>
+One Ambassador will be chosen as the “Ambassador of the weak” and will be featured on the home
+page of official site.<br>
+If you do your best then you may receive the chance of internship or full time job.
+We are looking for energetic and driven ambassadors who tell others that how much money they can save n earn with Docarto.
+We hope that you will have loads of fun. We Will assign you tasks based on your
+performance.<br>
+If you have any query then you may contact us. Happy Journey!
+</div>
+<div class="col-sm-4">
+<div class="modal-dialog" role="document">
+      <div class="modal-content modal-info">
+          <div class="modal-body modal-spa">
+          <div class="login-grids">
+            <div class="login">
+              <div class="login-bottom">
+                <h3>Brand Ambassador Program</h3>
+								{{form.non_field_errors}}
+                <form method="post">
+                  {%csrf_token%}
+                <div class="sign-up">
+                    <label>Name :</label>
+										{% for error in form.name.errors %}
+											<div class="alert alert-warning">
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>{{ error }}</strong>
+											</div>
+										{% endfor %}
+                    <input type="text" name="name" required="true">
+                  </div>
+                  <div class="sign-up">
+                    <label>Email :</label>
+										{% for error in form.email.errors %}
+											<div class="alert alert-warning">
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>{{ error }}</strong>
+											</div>
+										{% endfor %}
+                    <input type="email" value="{{request.user.email}}" readonly >
+                  </div>
+                  <div class="sign-up">
+                    <label>Phone No.</label>
+										{% for error in form.phone.errors %}
+											<div class="alert alert-warning">
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>{{ error }}</strong>
+											</div>
+										{% endfor %}
+                    <input type="text" name="phone" required="true">
+
+                  </div>
+                  <div class="sign-up">
+                    <label>Facebook Profile Link :</label>
+										{% for error in form.fb_url.errors %}
+											<div class="alert alert-warning">
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>{{ error }}</strong>
+											</div>
+										{% endfor %}
+                    <input type="text" name="fb_url">
+                  </div>
+                  <div class="filteration">
+    <h4>Choose your Profession</h4>
+		{% for error in form.profession.errors %}
+			<div class="alert alert-warning">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>{{ error }}</strong>
+			</div>
+		{% endfor %}
+    <div class="swit form">
+<input name="profession" type="checkbox" id="Student" value="1"><label for="Student">Student</label><br/>
+<input name="profession" type="checkbox" id="Employee" value="2"><label for="Employee">Employee</label><br/>
+<input name="profession" type="checkbox" id="Other" value="3"><label for="Other">Other</label><br/>
+    </div>
+  </div>
+                                        <div>
+  <label>Why do you want to apply for the brand ambassador program?:</label>
+	{% for error in form.why.errors %}
+		<div class="alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong>{{ error }}</strong>
+		</div>
+	{% endfor %}
+  <textarea class="form-control" rows="3" id="comment" name="why"></textarea>
+</div>
+                                         <div>
+  <label>How will you promot Docarto(Any Marketing Idea):</label>
+	{% for error in form.how.errors %}
+		<div class="alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong>{{ error }}</strong>
+		</div>
+	{% endfor %}
+  <textarea class="form-control" rows="4" id="comment" name="how"></textarea>
+</div>
+                                         <div>
+  <label>Extra Curricular Activities (Please mention, Like you are a Graphic Designer,Digital Marketer...  :</label>
+	{% for error in form.interests.errors %}
+		<div class="alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+		<strong>{{ error }}</strong>
+		</div>
+	{% endfor %}
+	<textarea class="form-control" rows="2" id="comment" name="interests"></textarea>
+</div><br>
+                  <div class="sign-up">
+                    <input type="submit" value="Submit" >
+                  </div>
+
+                </form>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div></div>
+</div>
+</div>
+{% endblock %}

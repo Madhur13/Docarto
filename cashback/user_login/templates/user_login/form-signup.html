@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Sign Up | Docarto </title>
+{% endblock %}
+{% block content%}
+     <div class="container">
+
+	 <div class="row">
+	 <div class="col-sm-7">
+	<img src="{% static 'main/images/register-now.jpg'%}" class="img-responsive">
+		</div>
+      <div class="col-sm-5">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content modal-info">
+							<div class="modal-body modal-spa">
+							<div class="login-grids">
+								<div class="login">
+									<div class="login-bottom">
+										<h3>Create account for free</h3>
+										<form action='{% url 'signup' %}' method='POST'>
+                      {% csrf_token %}
+                      {% if message %}
+                      <div class="alert alert-warning">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>{{ message }}</strong>
+                      </div>
+
+  										{% endif%}
+                      <div class="sign-up">
+                        <h4>Email :</h4>
+                        <input type="email"  name="username"   required="true">
+                      </div>
+                      <div class="sign-up">
+                        <h4>Password :</h4>
+                        <input type="password" name="password"  required="true">
+
+                      </div>
+                                            <div class="sign-up">
+                        <h4>Referral Code(Optional) :</h4>
+                        <input type="text" name="referral"  >
+
+                      </div>
+                      <div class="sign-up">
+                        <input type="submit" value="REGISTER NOW" >
+                      </div>
+
+
+										</form>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+                                <p>By signing up you agree to our <a href="{% url 'terms' %}"><b>Terms and Privacy.</b></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+
+</div>
+</div>
+{%endblock%}

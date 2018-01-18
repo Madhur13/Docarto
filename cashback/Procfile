@@ -1,0 +1,1 @@
+web: gunicorn --chdir cashback --log-file - cashback.wsgi:application

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}
+	<title>All Portals | Docarto</title>
+{% endblock %}
+
+{% block metatags %}
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+{%endblock %}
+{% block content %}
+		<br>
+	  <img src="{% static 'main/images/pic.jpg' %}" class="img-responsive">
+
+	<div class="container-fluid">
+		<div class="col-sm-3 products-left">
+
+		<form>
+
+			<div class="filteration">
+			 <h4>Filter by Category</h4>
+			 <div class="swit form">
+			 {% for category in categories %}
+					<input class="cat_filter_allPortals" type="checkbox" value="{{category.id}}" id="{{forloop.counter}}">
+						<label for="{{forloop.counter}}">{{ category.name  }}</label><br/>
+				{% endfor %}
+ 			</div>
+			</div>
+		</form>
+	<div class="clearfix"></div>
+		</div>
+		<div class="col-sm-9 products-right">
+
+	<div class="filteration" >
+	  <h4>Click on your favourite portal and see offers </h4>
+	<div class="swit" style="height:651px;overflow:auto;">
+
+		<div id="allPortals">
+			{{results}}
+		</div>
+            </div>
+			</div>
+    </div>
+
+  </div>
+		<script>
+		all_portals_filter = [];
+		</script>
+		<script src="{% static 'main/js/all_portals_filter.js' %}" type="text/javascript"></script>
+
+{% endblock %}

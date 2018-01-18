@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Setting New password{% endblock %}
+{% block content%}
+{% if validlink %}
+<p class="page-description">Please enter your new password twice.<br />
+So we can verify you typed it in correctly.</p>
+<div class="modal-dialog" role="document">
+<div class="modal-content modal-info">
+<div class="modal-body modal-spa">
+	<div class="login-grids">
+		<div class="login">
+			<div class="login-right">
+<form action="" method="post">
+	<div style="display:none">
+			<input type="hidden" value="{{ csrf_token }}" name="csrfmiddlewaretoken">
+	</div>
+					<div class="sign-in">
+						{{ form.new_password1.errors }}
+						 <label for="id_new_password1">New password:</label>
+						{{ form.new_password1 }}
+					</div>
+					<div class="sign-in">
+						{{ form.new_password2.errors }}
+						 <label for="id_new_password2">Confirm password:</label>
+						{{ form.new_password2 }}
+					</div>
+					<div class="sign-in">
+						<input type="submit" value="Change my password" >
+					</div>
+
+</form>
+</div>
+		</div>
+								</div>
+</div>
+</div>
+</div>
+{% else %}
+<h1 class="page-description">Password reset unsuccessful</h1>
+<p class="page-description">The password reset link was invalid, <br />
+possibly because it has already been used. <br />
+Please request a new password reset by clicking <a href="{% url 'pass_reset' %}">here</a>.</p>
+{% endif %}
+{% endblock %}

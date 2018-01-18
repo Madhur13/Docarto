@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}
+	<title>Click Record | Docarto</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-sm-12">
+
+             <h2 class="page-description">Overall Status of all members</h2>
+
+		<div class="table-responsive checkout-right animated wow slideInUp " style="margin-left:95px;">
+			<table class="timetable_sub">
+               <thead>
+					<tr>
+            <th>Date</th>
+            <th>Portal</th>
+						<th>Category</th>
+            <th>User ID</th>
+						<th>User Email</th>
+						<th>Offer ID</th>
+            <th>Offer</th>
+						<th>Click ID</th>
+					</tr>
+				</thead>
+
+
+              <tr class="rem1">
+                        <td>{{click.created.date}}</td>
+                        <td>{{click.offer.company.name}}</td>
+						            <td>{{click.offer.category.name}}</td>
+						            <td>{{click.user.id}}</td>
+						            <td>{{click.user.user}}</td>
+                        <td>{{click.offer.id}}</td>
+						            <td>{{click.offer.description}}</td>
+                         <td>SUB{{click.id}}</td>
+					     </tr>
+          
+						</table>
+        </div>
+
+
+</div>
+        </div>
+    </div>
+
+   <br>
+   {% endblock %}

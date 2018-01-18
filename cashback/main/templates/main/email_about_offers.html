@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% for offer in offers %}
+		 
+ {{forloop.counter}}.  {{offer.company.name}}
+ <br/>
+ {{offer.description}} <br/>
+		        			
+		        			<a target="_blank" href="{{request.get_host}} {% url 'shop' offer.id%}" >GRAB OFFER</a>
+<br/>							
+		  
+{% endfor %}
+</body>
+</html>

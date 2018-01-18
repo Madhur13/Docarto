@@ -1,0 +1,123 @@
+
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}
+	<title>Docarto | Save & Earn Money with us </title>
+{% endblock %}
+{% block metatags %}
+<meta name="keywords" content="Online Shopping Deals, Cashback offers, cashback site of india, best offers on shopping, latest offers, coupon for online shopping, cashback deals, Refer and Earn, refer and get, champcash" />
+<meta name="description" content="A portal where you get latest offers n deals on different shopping and servieces site of india, We also offer 90% cashback to our members which we get from our partner site.">
+{% endblock %}
+{% block content%}
+
+					<div class="container">
+    <div class="row">
+    <div class="col-xs-12 col-sm-12 products-right">
+   <div class="category-page-top">
+				<script src="{% static 'main/js/responsiveslides.min.js' %}"></script>
+				<script>
+						// You can also use "$(window).load(function() {"
+						$(function () {
+						 // Slideshow 4
+						$("#slider3").responsiveSlides({
+							auto: true,
+							pager: true,
+							nav: false,
+							speed: 500,
+							namespace: "callbacks",
+							before: function () {
+						$('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+							$('.events').append("<li>after event fired.</li>");
+							}
+							});
+						});
+				</script>
+				<div  id="top" class="callbacks_container">
+					<ul class="rslides" id="slider3">
+						{% if sitedata.home_image1 %}
+								<li>
+									<img class="img-responsive" src={{sitedata.home_image1.url}} alt="{{sitedata.alt_tag1}}"/>
+								</li>
+						{% endif %}
+						{% if sitedata.home_image2 %}
+								<li>
+									<img class="img-responsive" src={{sitedata.home_image2.url}} alt="{{sitedata.alt_tag2}}"/>
+								</li>
+						{% endif %}
+						{% if sitedata.home_image3 %}
+								<li>
+									<img class="img-responsive" src={{sitedata.home_image3.url}} alt="{{sitedata.alt_tag3}}"/>
+								</li>
+						{% endif %}
+						{% if sitedata.home_image4 %}
+								<li>
+									<img class="img-responsive" src={{sitedata.home_image4.url}} alt="{{sitedata.alt_tag4}}"/>
+								</li>
+						{% endif %}
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+       </div></div></div></div>
+
+			 <div class="offer-divison">
+			 	<div class="container">
+						{{results}}
+				</div>
+			</div>
+
+<h1 align="center" 	class="page-description">Benefits of being a Member of Docarto.</h1>
+<div  class="container">
+			<div class="row">
+			<div class="col-sm-6">
+				<div class="team-member">
+												<div class="team-member-image"><img src="{% static 'main/images/Coupon-codes.jpg'%}" alt="Online Shopping Offers" class="img-rounded">
+						<ul>
+																<li class="team-member-name">Latest Offers n Deals</li>
+							<hr>
+							<p>Get best offers of differnet Portals and Earn Cashback</p>
+										</ul>
+					</div>
+										</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="team-member">
+												<div class="team-member-image"><img src="{% static 'main/images/Get-cash-from-our-commission.jpg' %}" class="img-rounded" alt="Get Extra Cashback">
+											<ul>
+																<li class="team-member-name">Get 90% cashback from our commission</li>
+								<hr>
+								<p>Just by referring your friends suppose how much you can earn</p>
+						</ul>
+
+				</div>
+								</div>
+		</div>
+		<div class="col-sm-6">
+				<div class="team-member">
+												<div class="team-member-image"><img src="{% static 'main/images/brand-ambassador-docarto.png' %}" alt="Campus-Ambassador Program" class="img-rounded">
+						<ul>
+							<li class="team-member-name">Become Brand-ambassador of Docarto</li>
+								<hr>
+								<p>Gain Marketing Experience and start earning with us</p>
+										</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+				<div class="team-member">
+												<div class="team-member-image"><img src="{% static 'main/images/your-guide.png' %}" alt="Top Offers directly in your inbox" class="img-rounded">
+						<ul>
+							<li class="team-member-name">Your Guide</li>
+								<hr>
+								<p>Get best offers on your favourite product/serviece in your Inbox.</p>
+										</ul>
+				</div>
+			</div>
+		</div>
+</div>
+</div>
+
+
+{% endblock %}
